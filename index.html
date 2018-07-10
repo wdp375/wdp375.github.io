@@ -242,6 +242,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/10/Mac-APP-OC-安装Ruby-Package/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fzcs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="风之传说">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/10/Mac-APP-OC-安装Ruby-Package/" itemprop="url">Mac APP OC 安装Ruby Package </a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-10T16:45:49+08:00">
+                2018-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="解决-Mac-APP-使用Ruby的框架，需要调用ruby安装gem-命令"><a href="#解决-Mac-APP-使用Ruby的框架，需要调用ruby安装gem-命令" class="headerlink" title="解决 Mac APP 使用Ruby的框架，需要调用ruby安装gem 命令"></a>解决 Mac APP 使用Ruby的框架，需要调用ruby安装gem 命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">+ (BOOL)scriptAdminExecute:(BOOL)isAdmin scriptPath:(NSString *)scriptPath argvments:(NSArray *)argvments output:(NSString **)outputStr error:(NSString **)errorStr &#123;</span><br><span class="line">    NSString *argvmentsStr = [argvments componentsJoinedByString:@&quot; &quot;];</span><br><span class="line">    NSString *isAdminPre = @&quot;&quot;;</span><br><span class="line">    if (isAdmin) &#123;</span><br><span class="line">        isAdminPre = @&quot;with administrator privileges&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    NSString *scriptPathAndArgv = [NSString stringWithFormat:@&quot;%@ %@&quot;,scriptPath,argvmentsStr];</span><br><span class="line">    NSDictionary *errorInfo = [NSDictionary dictionary];</span><br><span class="line">    NSString *executeScript = [NSString stringWithFormat:@&quot;do shell script \&quot;%@\&quot; %@&quot;, scriptPathAndArgv,isAdminPre];</span><br><span class="line">//    NSLog(@&quot;execute script = %@&quot;,executeScript);</span><br><span class="line">    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:executeScript];</span><br><span class="line">    NSAppleEventDescriptor * eventResult = [appleScript executeAndReturnError:&amp;errorInfo];</span><br><span class="line">    if (!eventResult)</span><br><span class="line">    &#123;</span><br><span class="line">        if ([errorInfo valueForKey:NSAppleScriptErrorNumber])</span><br><span class="line">        &#123;</span><br><span class="line">            NSNumber * errorNumber = (NSNumber *)[errorInfo valueForKey:NSAppleScriptErrorNumber];</span><br><span class="line">            if ([errorNumber intValue] == -128)</span><br><span class="line">                *errorStr = @&quot;The administrator password is required to do this.&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        // Set error message from provided message</span><br><span class="line">        if (*errorStr == nil)</span><br><span class="line">        &#123;</span><br><span class="line">            </span><br><span class="line">            if ([errorInfo valueForKey:NSAppleScriptErrorMessage])</span><br><span class="line">                *errorStr = (NSString *)[errorInfo valueForKey:NSAppleScriptErrorMessage];</span><br><span class="line">        &#125;</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        // Set output to the AppleScript&apos;s output</span><br><span class="line">        *outputStr = [eventResult stringValue];</span><br><span class="line">        return YES;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/04/越狱检测/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -326,125 +446,6 @@
 <p><a href="https://ryleyangus.com/repo/liberty.html" target="_blank" rel="noopener">https://ryleyangus.com/repo/liberty.html</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#import &lt;UIKit/UIKit.h&gt;</span><br><span class="line">#import &lt;AdSupport/AdSupport.h&gt;</span><br><span class="line">#include &lt;mach/mach.h&gt;</span><br><span class="line">#include &lt;sys/socket.h&gt;</span><br><span class="line">#include &lt;sys/sysctl.h&gt;</span><br><span class="line">#include &lt;dlfcn.h&gt;</span><br><span class="line">#include &lt;sys/stat.h&gt;</span><br><span class="line">#import &lt;mach-o/loader.h&gt;</span><br><span class="line">#import &lt;mach-o/dyld.h&gt;</span><br><span class="line">#import &lt;mach-o/arch.h&gt;</span><br><span class="line"></span><br><span class="line">#pragma mark - Jailbreak</span><br><span class="line"></span><br><span class="line">- (BOOL)jailbreak &#123;</span><br><span class="line">    BOOL jailbroken = NO;</span><br><span class="line">    NSString *cydiaPath = @&quot;/Applications/Cydia.app&quot;;</span><br><span class="line">    NSString *aptPath = @&quot;/private/var/lib/apt/&quot;;</span><br><span class="line">    if ([[NSFileManager defaultManager] fileExistsAtPath:cydiaPath]) &#123;</span><br><span class="line">        jailbroken = YES;</span><br><span class="line">    &#125;</span><br><span class="line">    if ([[NSFileManager defaultManager] fileExistsAtPath:aptPath]) &#123;</span><br><span class="line">        jailbroken = YES;</span><br><span class="line">    &#125;</span><br><span class="line">    struct stat stat_info;</span><br><span class="line">    if (0 == stat(&quot;/Library/MobileSubstrate/MobileSubstrate.dylib&quot;, &amp;stat_info)) &#123;</span><br><span class="line">        jailbroken = YES;</span><br><span class="line">    &#125;</span><br><span class="line">    if (0 == stat(&quot;/Applications/Cydia.app&quot;, &amp;stat_info)) &#123;</span><br><span class="line">        jailbroken = YES;</span><br><span class="line">    &#125;</span><br><span class="line">    if (0 == stat(&quot;/var/lib/cydia/&quot;, &amp;stat_info)) &#123;</span><br><span class="line">        jailbroken = YES;</span><br><span class="line">    &#125;</span><br><span class="line">    if (0 == stat(&quot;/var/cache/apt&quot;, &amp;stat_info)) &#123;</span><br><span class="line">        jailbroken = YES;</span><br><span class="line">    &#125;</span><br><span class="line">    int ret;</span><br><span class="line">    Dl_info dylib_info;</span><br><span class="line">    int (*func_stat)(const char *,struct stat *) = stat;</span><br><span class="line">    if ((ret = dladdr(func_stat, &amp;dylib_info))) &#123;</span><br><span class="line">        if (strcmp(dylib_info.dli_fname, &quot;/usr/lib/system/libsystem_kernel.dylib&quot;)) &#123;</span><br><span class="line">            jailbroken = YES;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    char *env = getenv(&quot;DYLD_INSERT_LIBRARIES&quot;);</span><br><span class="line">    if (env != NULL) &#123;</span><br><span class="line">        jailbroken = YES;</span><br><span class="line">    &#125;</span><br><span class="line">    return jailbroken;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (NSArray *)loadBinarys &#123;</span><br><span class="line">    NSMutableArray *dyldArr = [NSMutableArray array];</span><br><span class="line">    uint32_t count = _dyld_image_count();</span><br><span class="line">    for(uint32_t i = 0; i &lt; count; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        const char *dyld = _dyld_get_image_name(i);</span><br><span class="line">        NSString *dyldName = [NSString stringWithUTF8String:dyld];</span><br><span class="line">        if([dyldName hasPrefix:@&quot;/usr/lib/&quot;] || [dyldName hasPrefix:@&quot;/System/Library/&quot;] || [dyldName hasPrefix:@&quot;/Developer/Library/&quot;] || [dyldName hasPrefix:@&quot;/Developer/usr/lib/&quot;])&#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        [dyldArr addObject:dyldName];</span><br><span class="line">    &#125;</span><br><span class="line">    return dyldArr;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/03/test-my-site/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fzcs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="风之传说">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/03/test-my-site/" itemprop="url">test_my_site</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-03T00:18:56+08:00">
-                2018-07-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -582,6 +583,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"># 恢复暂存区的指定文件到工作区</span><br><span class="line">$ git checkout [file]</span><br><span class="line"></span><br><span class="line"># 恢复某个commit的指定文件到暂存区和工作区</span><br><span class="line">$ git checkout [commit] [file]</span><br><span class="line"></span><br><span class="line"># 恢复暂存区的所有文件到工作区</span><br><span class="line">$ git checkout .</span><br><span class="line"></span><br><span class="line"># 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</span><br><span class="line">$ git reset [file]</span><br><span class="line"></span><br><span class="line"># 重置暂存区与工作区，与上一次commit保持一致</span><br><span class="line">$ git reset --hard</span><br><span class="line"></span><br><span class="line"># 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</span><br><span class="line">$ git reset [commit]</span><br><span class="line"></span><br><span class="line"># 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致</span><br><span class="line">$ git reset --hard [commit]</span><br><span class="line"></span><br><span class="line"># 重置当前HEAD为指定commit，但保持暂存区和工作区不变</span><br><span class="line">$ git reset --keep [commit]</span><br><span class="line"></span><br><span class="line"># 新建一个commit，用来撤销指定commit</span><br><span class="line"># 后者的所有变化都将被前者抵消，并且应用到当前分支</span><br><span class="line">$ git revert [commit]</span><br><span class="line"></span><br><span class="line"># 暂时将未提交的变化移除，稍后再移入</span><br><span class="line">$ git stash</span><br><span class="line">$ git stash pop</span><br></pre></td></tr></table></figure>
 <p>十、其他</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 生成一个可供发布的压缩包</span><br><span class="line">$ git archive</span><br></pre></td></tr></table></figure>
+<p>error: RPC failed; HTTP 500 curl 22 The requested URL returned error: 500 Internal Server Error<br>fatal: The remote end hung up unexpectedly<br>解决办法：<br>git config http.postBuffer 524288000<br>http协议进行传输的缓存区</p>
 <p>##git 稀疏检出  获取单个Git的文件夹</p>
 <p>$mkdir project_folder<br>$cd project_folder<br>$git init<br>$git remote add -f origin <url><br>git config core.sparsecheckout true<br>$echo “libs” &gt;&gt; .git/info/sparse-checkout<br>$echo “apps/register.go” &gt;&gt; .git/info/sparse-checkout<br>git pull origin master<br>$echo “resource/css” &gt;&gt; .git/info/sparse-checkout<br>git read-tree -mu HEAD</url></p>
 <p>git remote add -f origin <a href="https://g.hz.netease.com/nisc/iOSAppDefend.git" target="_blank" rel="noopener">https://g.hz.netease.com/nisc/iOSAppDefend.git</a><br>git remote add -f origin <a href="https://git.coding.net/fengzhichuanshu/blog.dpweng.com.git" target="_blank" rel="noopener">https://git.coding.net/fengzhichuanshu/blog.dpweng.com.git</a><br>git remote add origin <a href="https://g.hz.netease.com/nisc/iOSAppDefend.git" target="_blank" rel="noopener">https://g.hz.netease.com/nisc/iOSAppDefend.git</a></p>
@@ -591,125 +593,6 @@
 <p>git pull origin master</p>
 <p>git pull origin master:master</p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/03/TEst/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fzcs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="风之传说">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/03/TEst/" itemprop="url">TEst</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-03T01:14:49+08:00">
-                2017-07-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -790,7 +673,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
