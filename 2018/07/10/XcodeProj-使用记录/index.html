@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="解决 Mac APP 使用Ruby的框架，需要调用ruby安装gem 命令调用方式1[FZScriptExecute scriptAdminExecute:YES scriptPath:@&amp;quot;&amp;quot; argvments:@[@&amp;quot;gem install xcodeproj&amp;quot;] output:&amp;amp;outputStr error:&amp;amp;errorStr]; 1">
+<meta name="description" content="使用Ruby xcodeproj  自动对xcodeproj工程添加运行脚本1ruby bundleScript.rb /xxxx/AGEmojiKeyboard/Example/AGEmojiKeyboardSample.xcodeproj AGEmojiKeyboardSample /Debug/ntescs/lib/clang/brt/res 1 1234567891011121314151">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac APP OC 安装Ruby Package ">
-<meta property="og:url" content="http://yoursite.com/2018/07/10/Mac-APP-OC-安装Ruby-Package/index.html">
+<meta property="og:title" content="XcodeProj 使用记录">
+<meta property="og:url" content="http://yoursite.com/2018/07/10/XcodeProj-使用记录/index.html">
 <meta property="og:site_name" content="风之传说">
-<meta property="og:description" content="解决 Mac APP 使用Ruby的框架，需要调用ruby安装gem 命令调用方式1[FZScriptExecute scriptAdminExecute:YES scriptPath:@&amp;quot;&amp;quot; argvments:@[@&amp;quot;gem install xcodeproj&amp;quot;] output:&amp;amp;outputStr error:&amp;amp;errorStr]; 1">
+<meta property="og:description" content="使用Ruby xcodeproj  自动对xcodeproj工程添加运行脚本1ruby bundleScript.rb /xxxx/AGEmojiKeyboard/Example/AGEmojiKeyboardSample.xcodeproj AGEmojiKeyboardSample /Debug/ntescs/lib/clang/brt/res 1 1234567891011121314151">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-10T08:57:09.000Z">
+<meta property="og:updated_time" content="2018-07-10T11:05:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac APP OC 安装Ruby Package ">
-<meta name="twitter:description" content="解决 Mac APP 使用Ruby的框架，需要调用ruby安装gem 命令调用方式1[FZScriptExecute scriptAdminExecute:YES scriptPath:@&amp;quot;&amp;quot; argvments:@[@&amp;quot;gem install xcodeproj&amp;quot;] output:&amp;amp;outputStr error:&amp;amp;errorStr]; 1">
+<meta name="twitter:title" content="XcodeProj 使用记录">
+<meta name="twitter:description" content="使用Ruby xcodeproj  自动对xcodeproj工程添加运行脚本1ruby bundleScript.rb /xxxx/AGEmojiKeyboard/Example/AGEmojiKeyboardSample.xcodeproj AGEmojiKeyboardSample /Debug/ntescs/lib/clang/brt/res 1 1234567891011121314151">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/10/Mac-APP-OC-安装Ruby-Package/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/10/XcodeProj-使用记录/"/>
 
 
 
 
 
-  <title>Mac APP OC 安装Ruby Package  | 风之传说</title>
+  <title>XcodeProj 使用记录 | 风之传说</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/10/Mac-APP-OC-安装Ruby-Package/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/10/XcodeProj-使用记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fzcs">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mac APP OC 安装Ruby Package </h1>
+          <h1 class="post-title" itemprop="name headline">XcodeProj 使用记录</h1>
         
 
         <div class="post-meta">
@@ -271,7 +271,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-10T16:45:49+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-10T19:01:17+08:00">
                 2018-07-10
               </time>
             
@@ -309,9 +309,8 @@
       
 
       
-        <h2 id="解决-Mac-APP-使用Ruby的框架，需要调用ruby安装gem-命令"><a href="#解决-Mac-APP-使用Ruby的框架，需要调用ruby安装gem-命令" class="headerlink" title="解决 Mac APP 使用Ruby的框架，需要调用ruby安装gem 命令"></a>解决 Mac APP 使用Ruby的框架，需要调用ruby安装gem 命令</h2><p>调用方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[FZScriptExecute scriptAdminExecute:YES scriptPath:@&quot;&quot; argvments:@[@&quot;gem install xcodeproj&quot;] output:&amp;outputStr error:&amp;errorStr];</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">具体</span><br><span class="line">+ (BOOL)scriptAdminExecute:(BOOL)isAdmin scriptPath:(NSString *)scriptPath argvments:(NSArray *)argvments output:(NSString **)outputStr error:(NSString **)errorStr &#123;</span><br><span class="line">    NSString *argvmentsStr = [argvments componentsJoinedByString:@&quot; &quot;];</span><br><span class="line">    NSString *isAdminPre = @&quot;&quot;;</span><br><span class="line">    if (isAdmin) &#123;</span><br><span class="line">        isAdminPre = @&quot;with administrator privileges&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    NSString *scriptPathAndArgv = [NSString stringWithFormat:@&quot;%@ %@&quot;,scriptPath,argvmentsStr];</span><br><span class="line">    NSDictionary *errorInfo = [NSDictionary dictionary];</span><br><span class="line">    NSString *executeScript = [NSString stringWithFormat:@&quot;do shell script \&quot;%@\&quot; %@&quot;, scriptPathAndArgv,isAdminPre];</span><br><span class="line">//    NSLog(@&quot;execute script = %@&quot;,executeScript);</span><br><span class="line">    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:executeScript];</span><br><span class="line">    NSAppleEventDescriptor * eventResult = [appleScript executeAndReturnError:&amp;errorInfo];</span><br><span class="line">    if (!eventResult)</span><br><span class="line">    &#123;</span><br><span class="line">        if ([errorInfo valueForKey:NSAppleScriptErrorNumber])</span><br><span class="line">        &#123;</span><br><span class="line">            NSNumber * errorNumber = (NSNumber *)[errorInfo valueForKey:NSAppleScriptErrorNumber];</span><br><span class="line">            if ([errorNumber intValue] == -128)</span><br><span class="line">                *errorStr = @&quot;The administrator password is required to do this.&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        // Set error message from provided message</span><br><span class="line">        if (*errorStr == nil)</span><br><span class="line">        &#123;</span><br><span class="line">            </span><br><span class="line">            if ([errorInfo valueForKey:NSAppleScriptErrorMessage])</span><br><span class="line">                *errorStr = (NSString *)[errorInfo valueForKey:NSAppleScriptErrorMessage];</span><br><span class="line">        &#125;</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        // Set output to the AppleScript&apos;s output</span><br><span class="line">        *outputStr = [eventResult stringValue];</span><br><span class="line">        return YES;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <h1 id="使用Ruby-xcodeproj-自动对xcodeproj工程添加运行脚本"><a href="#使用Ruby-xcodeproj-自动对xcodeproj工程添加运行脚本" class="headerlink" title="使用Ruby xcodeproj  自动对xcodeproj工程添加运行脚本"></a>使用Ruby xcodeproj  自动对xcodeproj工程添加运行脚本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby bundleScript.rb /xxxx/AGEmojiKeyboard/Example/AGEmojiKeyboardSample.xcodeproj AGEmojiKeyboardSample /Debug/ntescs/lib/clang/brt/res 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"># addScript</span><br><span class="line"># $LOAD_PATH &lt;&lt; &apos;.&apos;</span><br><span class="line"># $LOAD_PATH.unshift</span><br><span class="line"></span><br><span class="line"># $LOAD_PATH.unshift(File.dirname(__FILE__))</span><br><span class="line">require &apos;xcodeproj&apos;</span><br><span class="line"># ARGV[0]:project 路径</span><br><span class="line"># ARGV[1]：target名字</span><br><span class="line"># ARGV[2]：添加的scirpt资源路径</span><br><span class="line">puts &apos;ruby start&apos;</span><br><span class="line">projPath =  ARGV[0]</span><br><span class="line">targetName = ARGV[1]</span><br><span class="line">bundleSourePath = ARGV[2]</span><br><span class="line">bundleScriptAction = ARGV[3]</span><br><span class="line"># puts projPath.length</span><br><span class="line"># ＃打开创建的Example.xcodeproj文件</span><br><span class="line">puts projPath</span><br><span class="line">proj=Xcodeproj::Project.open(projPath)</span><br><span class="line">targetIndex = 0</span><br><span class="line">proj.targets.each_with_index do |target, index|</span><br><span class="line">    if target.name  == targetName</span><br><span class="line">        targetIndex = index</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">target = proj.targets[targetIndex]</span><br><span class="line">scirptArr = target.shell_script_build_phases</span><br><span class="line">for tmpPhase in scirptArr do</span><br><span class="line">    if tmpPhase.name.end_with?(&quot;NtescsBundleScript&quot; )</span><br><span class="line">        puts &quot;NtescsBundleScript exist&quot;</span><br><span class="line">        ntescsBundleScript = tmpPhase</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">shell_script = &quot;function copyResdir()&#123;\nfor element in `ls $1` \n do\n Bundle_Source_Path=$1\&quot;/\&quot;$element  \nif [ -d $Bundle_Source_Path ]  \nthen  \necho \&quot;Bundle_Source_Path:  $&#123;Bundle_Source_Path&#125; \&quot;  \nBundle_Source_TO_PATH=\&quot;$&#123;BUILT_PRODUCTS_DIR&#125;/$&#123;TARGET_NAME&#125;.app\&quot;  \necho \&quot;to path: $&#123;Bundle_Source_TO_PATH&#125; \&quot;  \n/bin/cp -a \&quot;$&#123;Bundle_Source_Path&#125;\&quot; \&quot;$&#123;Bundle_Source_TO_PATH&#125;\&quot;   \nfi  \ndone  \n&#125;   \nroot_dir=\&quot;#&#123;bundleSourePath&#125;\&quot; \ncopyResdir $root_dir&quot;</span><br><span class="line">if ntescsBundleScript</span><br><span class="line">    </span><br><span class="line">    if bundleScriptAction</span><br><span class="line">        puts &quot;change shell_script&quot;</span><br><span class="line">        ntescsBundleScript.shell_script = shell_script</span><br><span class="line">    else</span><br><span class="line">        puts &quot;remove shell_script&quot;</span><br><span class="line">        ntescsBundleScript.shell_script = &quot;&quot;</span><br><span class="line">    end</span><br><span class="line">else</span><br><span class="line">    puts &quot;new shell_script&quot;</span><br><span class="line">    phase = target.new_shell_script_build_phase(&quot;NtescsBundleScript&quot;)</span><br><span class="line">    phase.shell_script = shell_script</span><br><span class="line">end</span><br><span class="line">puts &apos;true&apos;</span><br><span class="line">proj.save</span><br><span class="line">puts &apos;true&apos;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -335,8 +334,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/04/越狱检测/" rel="next" title="越狱检测">
-                <i class="fa fa-chevron-left"></i> 越狱检测
+              <a href="/2018/07/10/Mac-APP-OC-安装Ruby-Package/" rel="next" title="Mac APP OC 安装Ruby Package ">
+                <i class="fa fa-chevron-left"></i> Mac APP OC 安装Ruby Package 
               </a>
             
           </div>
@@ -344,10 +343,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/10/XcodeProj-使用记录/" rel="prev" title="XcodeProj 使用记录">
-                XcodeProj 使用记录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -461,7 +456,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决-Mac-APP-使用Ruby的框架，需要调用ruby安装gem-命令"><span class="nav-number">1.</span> <span class="nav-text">解决 Mac APP 使用Ruby的框架，需要调用ruby安装gem 命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Ruby-xcodeproj-自动对xcodeproj工程添加运行脚本"><span class="nav-number">1.</span> <span class="nav-text">使用Ruby xcodeproj  自动对xcodeproj工程添加运行脚本</span></a></li></ol></div>
             
 
           </div>
